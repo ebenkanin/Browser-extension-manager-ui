@@ -73,6 +73,7 @@ xhr.onreadystatechange = function(){
         const data = JSON.parse(this.responseText)
         data.forEach(item => {
             sendDataToLocalStorage(item)
+            retrieveDataFromLocalStorage()
         });
     }
 
@@ -82,7 +83,7 @@ xhr.onreadystatechange = function(){
 
 xhr.send()
 
-retrieveDataFromLocalStorage()
+
 
     }
 }
