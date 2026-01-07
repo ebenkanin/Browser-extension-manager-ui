@@ -5,9 +5,11 @@ const template = document.getElementById('card-template');
 //
 
 
-
+//on page load, it retrieve data from the json file, store it in the local storage and render
 
 window.addEventListener('DOMContentLoaded', innit)
+
+
 
 
 function sendDataToLocalStorage(item){
@@ -41,6 +43,8 @@ function retrieveDataFromLocalStorage(){
 
         dataFromLocalStorage.forEach(item=>{
 
+            // clone template.
+
              const templateClone = template.content.cloneNode(true);
 
              
@@ -48,6 +52,8 @@ function retrieveDataFromLocalStorage(){
              templateClone.querySelector('.logo').src = item.logo;
              templateClone.querySelector('h2').textContent = item.name;
              templateClone.querySelector('p').textContent = item.description;
+
+            //  append clone to container. 
 
              cardContainer.appendChild(templateClone)
 
@@ -58,16 +64,20 @@ function retrieveDataFromLocalStorage(){
 
     }
 }
+
+// starter function.
 function innit(){
     if(localStorage.getItem('items') !== null){
         retrieveDataFromLocalStorage()
     }else{
 
+        //initialize new https request
+
         const xhr = new XMLHttpRequest();
 
-xhr.open('GET', './data.json')
+        xhr.open('GET', './data.json')
 
-xhr.onreadystatechange = function(){
+        xhr.onreadystatechange = function(){
 
     if(this.readyState ===4 && this.status >= 200 && this.status < 400){
         const data = JSON.parse(this.responseText)
