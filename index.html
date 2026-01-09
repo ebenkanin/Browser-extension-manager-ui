@@ -34,18 +34,18 @@
 
             <div class="filter-btns w-full md:w-1/2  flex justify-center md:justify-end gap-4">
 
-                <button id="show-all" class="px-6 py-3 bg-red-500 outline-1 rounded-4xl font-Noto text-base md:text-xl text-btn text-center  flex justify-center items-center cursor-pointer">
+                <button id="show-all" class=" btn px-6 py-3 bg-bg-toggle hover:bg-bg-btn-hover outline-1 rounded-4xl font-Noto text-base md:text-xl text-white text-center  flex justify-center items-center cursor-pointer">
                     All
                 </button>
 
 
 
-                <button id="filter-Active" class="px-6 py-3 bg-btn outline-1 outline-btn-outline text-white rounded-4xl font-Noto text-base md:text-xl text-center  flex justify-center items-center cursor-pointer">
+                <button id="filter-Active" class="btn px-6 py-3 bg-btn  hover:bg-bg-btn-hover  outline-1 outline-btn-outline text-white rounded-4xl font-Noto text-base md:text-xl text-center  flex justify-center items-center cursor-pointer">
                     Active
                 </button>
 
 
-                <button id="filter-inactive" class="px-6 py-3  bg-btn outline-1 outline-btn-outline text-white rounded-4xl font-Noto text-base md:text-xl text-center  flex justify-center items-center cursor-pointer">
+                <button id="filter-inactive" class=" btn px-6 py-3  bg-btn hover:bg-bg-btn-hover outline-1 outline-btn-outline text-white rounded-4xl font-Noto text-base md:text-xl text-center  flex justify-center items-center cursor-pointer">
                     Inactive 
                 </button>
 
@@ -84,10 +84,11 @@
                     </button>
 
 
-                    <label for="">
-                        <input type="checkbox">
+                    <label for="check" class="bg-btn w-16 h-8 rounded-4xl flex items-center relative cursor-pointer before:absolute before:bg-neutral-100 before:h-6 before:w-6 before:rounded-full before:translate has-[input:checked]:before:translate-x-10 before:transition-transform before:duration-500 has-[input:checked]:bg-bg-toggle 
+                    ">
+                        <input type="checkbox" id="check" class="hidden">
                     </label>
-
+ 
                 </div>
                 
 

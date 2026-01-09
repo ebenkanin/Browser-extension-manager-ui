@@ -9,6 +9,8 @@
     --color-btn: rgb(47,54,75);
     --color-btn-outline:rgb(84,89,105);
     --color-bg-neutral:rgb(33,38,54);
+    --color-bg-toggle:hsl(3,86%,64%);
+    --color-bg-btn-hover:hsl(3,71%,56%);
 }
 
 

@@ -2,6 +2,8 @@ const cardContainer = document.querySelector('.cards-container');
 
 const template = document.getElementById('card-template');
 
+const navBtns = document.querySelectorAll('.btn')
+
 //
 
 
@@ -41,7 +43,7 @@ function retrieveDataFromLocalStorage(){
 
         dataFromLocalStorage = JSON.parse(localStorage.getItem('items'))
 
-        dataFromLocalStorage.forEach(item=>{
+        dataFromLocalStorage.forEach((item, index)=>{
 
             // clone template.
 
@@ -52,13 +54,19 @@ function retrieveDataFromLocalStorage(){
              templateClone.querySelector('.logo').src = item.logo;
              templateClone.querySelector('h2').textContent = item.name;
              templateClone.querySelector('p').textContent = item.description;
+             const checkbox = templateClone.querySelector('input[type="checkbox"]');
+             const label = templateClone.querySelector('label');
+
+             const uniqueId = `toggle-${index}`;
+
+            checkbox.id = uniqueId;
+            label.setAttribute('for', uniqueId);
+            checkbox.checked = item.isActive;
 
             //  append clone to container. 
 
              cardContainer.appendChild(templateClone)
 
-             console.log(cardContainer)
-             console.log(template)
 
         })
 
@@ -97,4 +105,41 @@ xhr.send()
 
     }
 }
+
+
+navBtns.forEach((btn)=>{
+    btn.addEventListener('click',()=>{
+        displayFocusBtn();
+
+        btn.classList.remove('bg-btn')
+
+        btn.classList.add('bg-bg-toggle');
+        
+    })
+
+    
+})
+
+
+function displayFocusBtn(){
+    navBtns.forEach(btn => { 
+
+
+       
+
+            btn.classList.remove('bg-bg-toggle')
+
+            btn.classList.add('bg-btn') 
+            
+
+        
+
+        
+           
+            
+        }
+    )
+        
+        
+    }
 
