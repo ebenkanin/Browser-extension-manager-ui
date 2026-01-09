@@ -269,13 +269,13 @@ function displayAllExtensions(){
     retrieveDataFromLocalStorage()
 }
 
-checkbox.addEventListener("change", () => {
-    const data = JSON.parse(localStorage.getItem("items"))
+// checkbox.addEventListener("change", () => {
+//     const data = JSON.parse(localStorage.getItem("items"))
 
-    data[index].isActive = checkbox.checked   // true or false
+//     data[index].isActive = checkbox.checked   // true or false
 
-    localStorage.setItem("items", JSON.stringify(data))
-})
+//     localStorage.setItem("items", JSON.stringify(data))
+// })
 
 
 
