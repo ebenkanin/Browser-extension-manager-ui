@@ -10,6 +10,12 @@ const showAll = document.getElementById('show-all')
 
 const filterInactive = document.getElementById('filter-inactive')
 
+let currentFilter = 'All'
+
+filterActive.getAttribute('data-filter')
+
+
+
 //
 
 
@@ -62,12 +68,40 @@ function retrieveDataFromLocalStorage(){
              templateClone.querySelector('p').textContent = item.description;
              const checkbox = templateClone.querySelector('input[type="checkbox"]');
              const label = templateClone.querySelector('label');
+             const removeBtn = templateClone.querySelector('button')
 
              const uniqueId = `toggle-${index}`;
 
             checkbox.id = uniqueId;
             label.setAttribute('for', uniqueId);
             checkbox.checked = item.isActive;
+
+            // event handler for updating active status of extension
+            checkbox.addEventListener('change', ()=>{
+                dataFromLocalStorage = JSON.parse(localStorage.getItem("items"))
+
+                dataFromLocalStorage[index].isActive = checkbox.checked
+
+                localStorage.setItem("items", JSON.stringify(dataFromLocalStorage))
+            } )
+
+            // function to remove cards
+            removeBtn.addEventListener('click', function removeCard(){
+
+                console.removeBtn
+
+                cardContainer.innerHTML="";
+                
+
+                dataFromLocalStorage = JSON.parse(localStorage.getItem("items"))
+                dataFromLocalStorage.splice(index,1)
+                localStorage.setItem("items",JSON.stringify(dataFromLocalStorage))
+
+                retrieveDataFromLocalStorage()
+
+            
+
+            })
 
             //  append clone to container. 
 
@@ -81,7 +115,7 @@ function retrieveDataFromLocalStorage(){
 
 // starter function.
 function innit(){
-    if(localStorage.getItem('items') !== null){
+    if(localStorage.getItem('items') !== null && JSON.parse(localStorage.getItem('items')).length >0){
         retrieveDataFromLocalStorage()
     }else{
 
@@ -184,12 +218,29 @@ function displayActiveExtensionsOnly(){
              templateClone.querySelector('p').textContent = item.description;
              const checkbox = templateClone.querySelector('input[type="checkbox"]');
              const label = templateClone.querySelector('label');
+            
 
              const uniqueId = `toggle-${index}`;
 
             checkbox.id = uniqueId;
             label.setAttribute('for', uniqueId);
             checkbox.checked = item.isActive;
+
+             // event handler for updating active status of extension
+            checkbox.addEventListener('change', ()=>{
+                dataFromLocalStorage = JSON.parse(localStorage.getItem("items"))
+
+                dataFromLocalStorage[index].isActive = checkbox.checked
+
+                localStorage.setItem("items", JSON.stringify(dataFromLocalStorage))
+            } )
+
+
+            //remove card function
+
+            
+
+           
 
             //  append clone to container. 
 
@@ -248,6 +299,14 @@ function displayInactiveExtensionsOnly(){
             label.setAttribute('for', uniqueId);
             checkbox.checked = item.isActive;
 
+            checkbox.addEventListener('change', ()=>{
+                dataFromLocalStorage = JSON.parse(localStorage.getItem("items"))
+
+                dataFromLocalStorage[index].isActive = checkbox.checked
+
+                localStorage.setItem("items", JSON.stringify(dataFromLocalStorage))
+            } )
+
             //  append clone to container. 
 
              cardContainer.appendChild(templateClone)
@@ -269,6 +328,9 @@ function displayAllExtensions(){
     retrieveDataFromLocalStorage()
 }
 
+
+
+
 // checkbox.addEventListener("change", () => {
 //     const data = JSON.parse(localStorage.getItem("items"))
 
@@ -284,3 +346,6 @@ filterActive.addEventListener('click', displayActiveExtensionsOnly)
 filterInactive.addEventListener('click', displayInactiveExtensionsOnly)
 
 showAll.addEventListener('click', displayAllExtensions )
+
+
+

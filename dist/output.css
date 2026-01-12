@@ -8,6 +8,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-600: oklch(57.7% 0.245 27.325);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-800: oklch(27.8% 0.033 256.848);
@@ -218,17 +219,23 @@
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
+  .h-17 {
+    height: calc(var(--spacing) * 17);
+  }
+  .h-17\.5 {
+    height: calc(var(--spacing) * 17.5);
+  }
+  .h-56 {
+    height: calc(var(--spacing) * 56);
+  }
+  .h-56\.25 {
+    height: calc(var(--spacing) * 56.25);
+  }
   .h-\[70px\] {
     height: 70px;
   }
   .h-\[225px\] {
     height: 225px;
-  }
-  .h-screen {
-    height: 100vh;
-  }
-  .min-h-auto {
-    min-height: auto;
   }
   .min-h-screen {
     min-height: 100vh;
@@ -410,9 +417,6 @@
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
-  .text-btn {
-    color: var(--color-btn);
-  }
   .text-gray-300 {
     color: var(--color-gray-300);
   }
@@ -439,6 +443,13 @@
   }
   .outline-btn-outline {
     outline-color: var(--color-btn-outline);
+  }
+  .outline-red-600 {
+    outline-color: var(--color-red-600);
+  }
+  .duration-500 {
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
   }
   .before\:absolute {
     &::before {
@@ -506,20 +517,24 @@
       }
     }
   }
-  .focus\:bg-bg-toggle {
-    &:focus {
-      background-color: var(--color-bg-toggle);
+  .hover\:outline-red-600 {
+    &:hover {
+      @media (hover: hover) {
+        outline-color: var(--color-red-600);
+      }
+    }
+  }
+  .hover\:transform-border {
+    &:hover {
+      @media (hover: hover) {
+        transform-box: border-box;
+      }
     }
   }
   .focus\:outline-0 {
     &:focus {
       outline-style: var(--tw-outline-style);
       outline-width: 0px;
-    }
-  }
-  .active\:bg-bg-toggle {
-    &:active {
-      background-color: var(--color-bg-toggle);
     }
   }
   .has-\[input\:checked\]\:bg-bg-toggle {
@@ -704,13 +719,13 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-content {
   syntax: "*";
   initial-value: "";
-  inherits: false;
-}
-@property --tw-duration {
-  syntax: "*";
   inherits: false;
 }
 @property --tw-translate-x {
@@ -744,8 +759,8 @@
       --tw-gradient-to-position: 100%;
       --tw-font-weight: initial;
       --tw-outline-style: solid;
-      --tw-content: "";
       --tw-duration: initial;
+      --tw-content: "";
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
